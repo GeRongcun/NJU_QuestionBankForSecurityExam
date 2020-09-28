@@ -1,27 +1,19 @@
-'''
-@Author: your name
-@Date: 2020-03-16 11:12:27
-@LastEditTime: 2020-03-18 21:29:01
-@LastEditors: Please set LastEditors
-@Description: In User Settings Edit
-'''
 import requests
-# # 借助BeautifulSoup包解析
 from bs4 import BeautifulSoup
-# import re #使用正则表达式库,可以用这个库实现字符串片段匹配
 import os # 用于文件目录操作
-# import shutil # 用于文件目录的高级操作
 
 # url = "http://aqks.nju.edu.cn/pc/PersonInfo/StartExercise_Mobile.aspx?TestNum=1&SelTestNum=170&SelectTest=yes"
 url = "http://aqks.nju.edu.cn/pc/PersonInfo/StartExercise_Mobile.aspx"
-d={'TestNum':'1','SelTestNum':'1040','SelectTest':'yes'}
+d={'TestNum':'1','SelTestNum':'1','SelectTest':'yes'}
 headers = {
-    # 'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:64.0) Gecko/20100101 Firefox/64.0',
+    # 用户标识
     'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36 Edg/85.0.564.63',
+    # Cookie
     'Cookie':'_ga=GA1.3.1256847576.1601191563; ASP.NET_SessionId=ixi0wac51sgxmbdi4m4pv2fu; iPlanetDirectoryPro=ZbN712VGOA30elEnQByPYg',
+    # 报文主体的对象类型
     'content-type': 'application/x-www-form-urlencoded'
-    # 'content-type': 'content-type: text/html; charset=UTF-8'
 }
+
 response=requests.post(url,data=d,headers=headers)
 print(response.text)
 
